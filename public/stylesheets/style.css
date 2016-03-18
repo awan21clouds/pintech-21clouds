@@ -1,0 +1,11 @@
+.login-box-body{
+  /*padding: 10px 10px 10px 10px;*/
+  /*background: #00a7d0;*/
+  padding-bottom: 0px;
+}
+
+.login-form-footer{
+  padding: 5px 5px 5px 5px;
+  border-top: solid #f3f3f3 1px;
+  /*background: #00e765;*/
+}

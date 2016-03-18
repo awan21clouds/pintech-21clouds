@@ -1,0 +1,35 @@
+extends layout-main
+
+block content
+      .content-wrapper(ng-controller="pinController")
+        // Main content
+        section.content
+          .box
+            .box-header.with-border
+              h3.box-title My Pins
+            .box-body
+              .form-group
+                label Title
+                input.form-control(type='text', placeholder='Enter title', ng-model="pin.title")
+              .form-group
+                label Url
+                input.form-control(type='text', placeholder='Enter url', ng-model="pin.url")
+            .box-footer
+              .input-group
+                button.btn.btn-primary(type="button", ng-click="save()") Save
+          ul.mailbox-attachments.clearfix
+            li(ng-repeat="pin in myPins")
+              span.mailbox-attachment-icon.has-img
+                img(src='{{pin.url}}', alt='Attachment', style="background:#ffffff")
+              .mailbox-attachment-info(style="background:#ffffff")
+                span.mailbox-attachment-size
+                  span(ng-bind="pin.title")
+                  a.btn.btn-default.btn-xs.pull-right(href='javascript:;', ng-click="delete(pin._id)")
+                    i.fa.fa-times
+                  //span(ng-bind="book.title")
+      // /.content-wrapper
+      footer.main-footer
+        strong
+          | Copyright © 2016
+          a(href='https://github.com/awan21clouds') Awan21clouds
+          | .

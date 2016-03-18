@@ -1,0 +1,89 @@
+doctype html
+html(ng-app="pintech")
+  head
+    title= title
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/ionicons/css/ionicons.min.css')
+    link(rel='stylesheet', href='/AdminLTE/dist/css/AdminLTE.min.css')
+    link(rel='stylesheet', href='/AdminLTE/dist/css/skins/_all-skins.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js')
+    script(src='/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js')
+    script(src='/AdminLTE/dist/js/app.min.js')
+    script(src='/AdminLTE/dist/js/demo.js')
+    script(src='/angular/angular.min.js')
+    script(src='/angular-route/angular-route.min.js')
+    script(src='/controller.js')
+  body.skin-blue.layout-top-nav
+    .wrapper
+      header.main-header
+        nav.navbar.navbar-static-top
+          .container
+            .navbar-header
+              a.navbar-brand(href='/')
+                b Pin
+                | Tech
+              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+                i.fa.fa-bars
+            // Collect the nav links, forms, and other content for toggling
+            #navbar-collapse.collapse.navbar-collapse.pull-left
+              ul.nav.navbar-nav
+                li.active
+                  a(href='#')
+                    | Recent Pins
+                    span.sr-only (current)
+            .navbar-custom-menu
+              ul.nav.navbar-nav(ng-controller="userController")
+                li.dropdown.user.user-menu
+                  // Menu Toggle Button
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    //i.fa.fa-user
+                    span.hidden-xs Register
+                  ul.dropdown-menu
+                    // The user image in the menu
+                    li.login-box-body
+                      p.login-box-msg Register a new membership
+                      .form-group.has-feedback
+                        input.form-control(type='text', placeholder='Nick name', ng-model="user.nickname")
+                        span.glyphicon.glyphicon-user.form-control-feedback
+                      .form-group.has-feedback
+                        input.form-control(type='email', placeholder='Email', ng-model="user.email")
+                        span.glyphicon.glyphicon-envelope.form-control-feedback
+                      .form-group.has-feedback
+                        input.form-control(type='password', placeholder='Password', ng-model="user.password")
+                        span.glyphicon.glyphicon-lock.form-control-feedback
+                      .form-group.has-feedback
+                        input.form-control(type='password', placeholder='Retype password', ng-model="user.repassword")
+                        span.glyphicon.glyphicon-log-in.form-control-feedback
+                      .row(style="padding-bottom:10px;")
+                        .col-xs-5.pull-right
+                          button.btn.btn-primary.btn-block.btn-flat(ng-click="register()") Register
+                li.dropdown.user.user-menu
+                  // Menu Toggle Button
+                  a.dropdown-toggle(href='#', data-toggle='dropdown')
+                    //i.fa.fa-user
+                    span.hidden-xs Login
+                  ul.dropdown-menu
+                    // The user image in the menu
+                    li.login-box-body
+                      p.login-box-msg Sign in to start your session
+                      .form-group.has-feedback
+                        input.form-control(type='email', placeholder='Email', ng-model="user.email")
+                        span.glyphicon.glyphicon-envelope.form-control-feedback
+                      .form-group.has-feedback
+                        input.form-control(type='password', placeholder='Password', ng-model="user.password")
+                        span.glyphicon.glyphicon-lock.form-control-feedback
+                      .row
+                        .col-xs-8
+                          .checkbox.icheck
+                            label
+                              .icheckbox_square-blue(aria-checked='false', aria-disabled='false', style='position: relative;')
+                                input(type='checkbox', style='position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);')
+                                ins.iCheck-helper(style='position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);')
+                        .col-xs-4
+                          button.btn.btn-primary.btn-block.btn-flat(ng-click="login()") Login
+
+      block content
